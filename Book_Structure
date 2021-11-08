@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>    
+struct Books  
+   {
+   char  bookTitle[50]; //parameters to store details in the structure
+   char  authorName[50];
+   int   bookPrice;
+     };
+void display( struct Books book ) 
+    {
+   printf( "Book title: %s\n", book.bookTitle); //printing the details
+   printf( "Author name: %s\n", book.authorName);
+   printf( "Book Price: %d\n", book.bookPrice);
+   }
+
+int main( ) 
+    {
+
+   struct Books Book1;        
+   strcpy( Book1.bookTitle, "Da Vinci Code"); 
+   strcpy( Book1.authorName, "Dan brown"); 
+   Book1.bookPrice = 500;
+   display( Book1 );
+   return 0;
+   }
