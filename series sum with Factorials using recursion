@@ -1,0 +1,19 @@
+#include <stdio.h>
+ int factorial(int n) //recursive function 
+{
+    if (n == 0)  
+    return 1;  
+  else  
+    return(n * factorial(n-1));//condition to find factorial of num  
+}
+int main()
+{ 
+    int num;
+    double sum= 0;
+    printf("Enter last term of series: "); 
+    scanf("%d",&num);
+    for(int i=1; i<=num;i++)
+    sum += 1.0/factorial(i); //calculating sum of series
+    printf("Sum of the series:%f",sum);
+    return 0;
+}
