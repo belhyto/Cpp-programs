@@ -77,7 +77,7 @@ void sourceCode::gamePlay()
                    cout<<"Wrong Answer!! Lives remaining: "<<2-lifeCount<<endl;
                }
                  else{
-                        //print matrix
+                     sourceCode().displayMatrix();   //print matrix
                  }
                if(lifeCount>2)
                {
