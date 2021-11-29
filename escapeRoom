@@ -1,0 +1,100 @@
+#include<iostream>
+#include <string>
+using namespace std;
+class sourceCode
+{
+    public:
+   string name;
+   string questions[3][3]={"(to put question1)","(to put question2)","(to put question3)",
+                            "(to put question4)","(to put question5)","(to put question6)",
+                           "(to put question7)","(to put question8)","(to put question9)"};
+    char Ans[3][3];
+    char Key[3][3]={'1','2','3','4','5','6','7','8','9'};
+    int Score[];
+   sourceCode() {}
+   void input();
+   void displayMatrix();
+   void gamePlay();
+};
+string generateUsername( string &name)
+{
+  
+   int userDig=rand()% (9999-1000+1)+1000 ;
+   string userName= name + to_string(userDig);
+   return userName;
+}
+void sourceCode::input()
+{
+    cout<<"WElCOME TO THE ESCAPE-ROOM BUILDING"<<endl;
+    cout<<"Enter your name: "<<endl;
+    cin>>name;
+    cout<<"Hello "<<generateUsername(name)<<" !!"<<endl;
+}
+
+void sourceCode::displayMatrix()
+{
+    
+   for (int i=0; i<=5;i++)
+     cout<<"_";
+    cout<<endl;
+    for (int i=0; i<3;i++)
+    {
+         for (int j=0; j<5;j++)
+         {
+             if(j==0)
+             cout<<"|";
+            cout<<" ";
+            if(j==4)
+            cout<<"|";
+         }
+         cout<<endl;
+    }
+     for (int i=0; i<=5;i++)
+     cout<<"_";
+     cout<<endl;
+
+}
+void sourceCode::gamePlay()
+{
+   
+   cout<<"(to put instructions )"<<endl;
+   int k=0;
+   int lifeCount=0;
+    for(int i=0;i<3;i++)
+         
+        {
+           cout<<"Round"<<i+1<<endl;;
+            for(int j=0;j<3;j++)
+            {
+                k++;
+                cout<<"Question "<<k<<endl;
+                cout<<questions[i][j]<<endl;
+                cout<<" Enter the answer: "<<endl;
+               cin>>Ans[i][j];// accept elements from user
+               if(Ans[i][j]!=Key[i][j])
+               {
+                   lifeCount++;
+                   cout<<"Wrong Answer!! Lives remaining: "<<2-lifeCount<<endl;
+               }
+                 else{
+                        //print matrix
+                 }
+               if(lifeCount>2)
+               {
+               cout<<"All lives lost";
+               cout<<"Game over";
+               return;
+               }
+            }
+                    cout<<endl;
+
+        }
+}
+int main()
+{ 
+     sourceCode obj;
+     obj.input();
+     obj.displayMatrix();
+     obj.gamePlay();
+    return 0;
+}  
