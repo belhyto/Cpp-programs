@@ -81,8 +81,8 @@ void sourceCode::gamePlay()
                  }
                if(lifeCount>2)
                {
-               cout<<"All lives lost";
-               cout<<"Game over";
+               cout<<"All lives lost"<<endl;
+               cout<<"Game over.";
                return;
                }
             }
