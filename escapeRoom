@@ -5,15 +5,17 @@ class sourceCode
 {
     public:
    string name;
+   int check=3;
    string questions[3][3]={"(to put question1)","(to put question2)","(to put question3)",
                             "(to put question4)","(to put question5)","(to put question6)",
                            "(to put question7)","(to put question8)","(to put question9)"};
     char Ans[3][3];
+    //{'X','X','X','X','X','X','X','X','X'};
     char Key[3][3]={'1','2','3','4','5','6','7','8','9'};
     int Score[];
    sourceCode() {}
    void input();
-   void displayMatrix();
+   
    void gamePlay();
 };
 string generateUsername( string &name)
@@ -30,30 +32,46 @@ void sourceCode::input()
     cin>>name;
     cout<<"Hello "<<generateUsername(name)<<" !!"<<endl;
 }
-
-void sourceCode::displayMatrix()
+char displayMatrix(int &check)
 {
-    
+     char symbol[9]={' ',' ',' ',' ',' ',' ',' ',' ',' ',};
    for (int i=0; i<=5;i++)
-     cout<<"_";
+     cout<<'_';
     cout<<endl;
     for (int i=0; i<3;i++)
     {
          for (int j=0; j<5;j++)
          {
              if(j==0)
-             cout<<"|";
-            cout<<" ";
+             cout<<'|';
+              if(j>0&&j<4)
+             {
+               if(check==0){
+                symbol[j] ='o';
+                cout<<symbol[j];
+                   continue;
+               }
+                else if(check==1){
+                symbol[j] ='x';
+                cout<<symbol[j];
+                   continue;
+                }
+                else cout<<' ';
+             }
+              
+            
             if(j==4)
-            cout<<"|";
+            cout<<'|';
+            
          }
          cout<<endl;
     }
      for (int i=0; i<=5;i++)
-     cout<<"_";
+     cout<<'_';
      cout<<endl;
-
+     return ' ';
 }
+ 
 void sourceCode::gamePlay()
 {
    
@@ -71,14 +89,22 @@ void sourceCode::gamePlay()
                 cout<<questions[i][j]<<endl;
                 cout<<" Enter the answer: "<<endl;
                cin>>Ans[i][j];// accept elements from user
+               
                if(Ans[i][j]!=Key[i][j])
                {
+                   check=0;
+                   //cout<<check;
                    lifeCount++;
-                   cout<<"Wrong Answer!! Lives remaining: "<<2-lifeCount<<endl;
+                   cout<<"Wrong Answer!! Lives remaining: "<<2-lifeCount<<endl; //if(check ==false&& lifeCount<2)
+                     cout<<displayMatrix(check);                                                         //symbol[m]='/'
                }
-                 else{
-                     sourceCode().displayMatrix();   //print matrix
+                 if (Ans[i][j]==Key[i][j]) {
+                     cout<<"Correct Answer!!"<<endl;
+                     //cout<<check;
+                     check=1;
+                     cout<<displayMatrix(check);   //print matrix
                  }
+                // sourceCode().displayMatrix(); 
                if(lifeCount>2)
                {
                cout<<"All lives lost"<<endl;
@@ -90,11 +116,18 @@ void sourceCode::gamePlay()
 
         }
 }
+
+
+
 int main()
 { 
      sourceCode obj;
      obj.input();
-     obj.displayMatrix();
+     
      obj.gamePlay();
+   
     return 0;
 }  
+
+
+
